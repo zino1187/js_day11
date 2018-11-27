@@ -23,13 +23,23 @@ function init(){
 	createBox();
 }
 function createBox(){
-	boxArray[0]=new Box(stage,600,600,"blue");
+	for(var a=0;a<30;a++){
+		for(var i=0;i<30;i++){
+			boxArray.push(new Box(stage,20,20,"blue"));
+		}
+	}
+	//stage 의 크기를 동적으로 제어해보자!!
+	var stageX = 20*30;
+	var stageY= 20*30;
+	stage.style.width=stageX+"px";
+	stage.style.height=stageY+"px";
+	stage.style.backgroundSize=stageX+"px "+stageY+"px";
 }
 function gameLoop(){
 	for(var i=0;i<boxArray.length;i++){
-		boxArray[0].render();
+		boxArray[i].render();
 	}
-	setTimeout("gameLoop()",50);
+	setTimeout("gameLoop()",10);
 }
 addEventListener("load",function(){
 	init();

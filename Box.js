@@ -12,6 +12,7 @@ class Box{
 		this.div.style.height=height+"px";
 		this.div.style.background=bg;
 		this.div.style.opacity=1;//불투명
+		this.div.style.float="left";
 
 		//마우스를 올려놓으면, 타겟 투명도를 0으로 놓자!!
 		this.div.addEventListener("mouseover", ()=>{			
