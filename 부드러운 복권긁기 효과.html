@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>부드러운 복권긁기 효과</title>
+<style>
+#stage{
+	width:600px;
+	height:600px;
+	background:url("../res/shurek/img2.jpg");
+	background-size:600px 600px;
+	margin:auto;
+}
+</style>
+<script src="./Box.js"></script>
+<script>
+var stage;
+var boxArray=[];
+
+function init(){
+	stage=document.getElementById("stage");
+	gameLoop();
+	createBox();
+}
+function createBox(){
+	boxArray[0]=new Box(stage,600,600,"blue");
+}
+function gameLoop(){
+	for(var i=0;i<boxArray.length;i++){
+		boxArray[0].render();
+	}
+	setTimeout("gameLoop()",50);
+}
+addEventListener("load",function(){
+	init();
+});
+</script>
+</head>
+<body>
+	<div id="stage"></div>
+</body>
+</html>
