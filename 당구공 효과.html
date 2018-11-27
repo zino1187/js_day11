@@ -24,15 +24,25 @@
 <script src="./Ball.js"></script>
 <script>
 var info,stage;
+var ball;
+var ballArray=[];//태어날 공들이 들어갈 배열!!
+						//개성있는 변수명으로 가리킬 경우 반복문을
+						//사용할 수 없다!!
 
 function init(){
 	info=document.getElementById("info");
 	stage=document.getElementById("stage");
+
+	gameLoop();
 }
 function createBall(){
 	//볼 생성하자!!! = 거푸집(클래스)으로 부터 생성된 객체 1단위
 	//인스턴스라 한다...
-	var ball = new Ball(stage);
+	ball = new Ball(stage);
+	//생성된 공을 배열에 채워넣자!! 그러면 아래의 게임루프
+	//에서 배열에 들어있는 공 갯수만큼 move() 끝없이
+	//호출해준다..
+	ballArray.push(ball);
 }
 //키보드 중 space바에만 볼 생성 함수를 호출하자!!
 function fire(){
@@ -41,7 +51,13 @@ function fire(){
 		createBall();
 	}
 }
+//게임에 등장하는 모든~~ 객체들을 움직이도록 처리하는
+//엔진...
 function gameLoop(){
+	//배열에 채워진 게 있다면, 아래의 반복문 수행...
+	for(var i=0; i<ballArray.length;i++){
+		ballArray[i].move();
+	}
 	setTimeout("gameLoop()",10);		
 }
 
@@ -50,6 +66,7 @@ addEventListener("load", function(){
 });
 </script>
 </head>
+
 <body onKeyDown="fire()">
 	<div class="wrapper">
 		<div id="info"></div>
