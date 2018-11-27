@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>화살 날리기</title>
+<script>
+var span;
+var x=0; //첫번째 화살의 속도
+
+function init(){
+	createArrow();
+	gameLoop();
+}
+function createArrow(){
+	span=document.createElement("span");
+	//span은 inline 속성을 갖는다. padding 이 적용X
+	span.innerText="→";
+	span.style.fontSize=70+"px";
+	span.style.color="red";
+	span.style.position="absolute";
+	span.style.left=0+"px";
+	span.style.top=100+"px";
+
+	document.body.appendChild(span);
+}
+//화살 움직이기 함수
+function move(){
+	x+=1;
+	span.style.left=x+"px";
+}
+//모든 게임은 케릭터나 아이템이 현재 움직이지 않는다 해도, 기본적으로
+//루프가 실행되고 있어야 한다..
+function gameLoop(){
+	console.log("실행중..");
+	move();
+	setTimeout("gameLoop()", 10);
+}
+window.addEventListener("load", function(){
+	init();
+});
+</script>
+</head>
+<body>
+</body>
+</html>
