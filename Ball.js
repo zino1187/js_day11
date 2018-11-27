@@ -8,6 +8,8 @@ class Ball{
 		//까지는 그 값이 유지될 수 있다..
 		this.x=0;//공의 x좌표, 멤버변수(객체소속 변수)
 		this.y=0;//공의 y좌표, 멤버변수(객체소속 변수)
+		this.flagX=true;
+
 		this.div=document.createElement("div");
 		this.div.style.width=50+"px";
 		this.div.style.height=50+"px";
@@ -21,8 +23,17 @@ class Ball{
 	}	
 	//공의 움직임을 정의하는 메서드...
 	move(){
-		this.x+=5;
+		if(this.flagX){// flagX 참인동안은 우측이동
+			this.x+=5;
+		}else{//false 이면 좌측이동
+			this.x-=5;
+		}
+		if(this.x >=550 || this.x<=0){
+			this.flagX=!this.flagX;
+		}
 		this.y+=5;
+
+		this.div.innerText=this.x;
 		this.div.style.left=this.x+"px";		
 		this.div.style.top=this.y+"px";	
 	}
