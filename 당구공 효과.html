@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>당구공 효과</title>
+<style>
+.wrapper{
+	width:600px;
+	height:650px;
+	margin:auto;
+}
+#info{
+	width:100%;
+	height:50px;
+	background:pink;
+}
+#stage{
+	width:100%;
+	height:600px;
+	background:yellow;
+	position:relative;
+}
+</style>
+<script src="./Ball.js"></script>
+<script>
+var info,stage;
+
+function init(){
+	info=document.getElementById("info");
+	stage=document.getElementById("stage");
+}
+function createBall(){
+	//볼 생성하자!!! = 거푸집(클래스)으로 부터 생성된 객체 1단위
+	//인스턴스라 한다...
+	var ball = new Ball(stage);
+}
+//키보드 중 space바에만 볼 생성 함수를 호출하자!!
+function fire(){
+	var key=event.keyCode;
+	if(key==32){
+		createBall();
+	}
+}
+function gameLoop(){
+	setTimeout("gameLoop()",10);		
+}
+
+addEventListener("load", function(){
+	init();
+});
+</script>
+</head>
+<body onKeyDown="fire()">
+	<div class="wrapper">
+		<div id="info"></div>
+		<div id="stage"></div>
+	</div>
+</body>
+</html>
